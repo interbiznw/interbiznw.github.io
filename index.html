@@ -28,6 +28,61 @@
       document.getElementById('setAmount').innerHTML = setText;
     }
   </script>
+  
+    <br><br><br><br>
+
+  <!-- Set parameters and actions //-->
+  <script id="btcp_widget_data" async>
+    var btcpWidget = {};
+
+    function BTCPWidgetLoad() {
+
+      btcpWidget.data = {
+        "id": "btcp_widget",
+        "buttonData": "buy_A1_0",
+        "merchantid": "343",
+        "walletid": "12",
+        "amount": amtD,
+        "description" : "Button Description",
+        "transactiondetails" :
+         {
+        "itemId"    : 0,
+        "itemName"  :"None",
+        "userID"    :"0"
+         }
+      };
+
+      btcpWidget.onPaymentSuccess = function(data) {
+        alert("Payment success! Data:\n\n" + JSON.stringify(data));
+      };
+
+      btcpWidget.onPaymentFail = function(data) {
+        alert("Payment failed! Reason: " + data.reason);
+      }
+
+      var s = document.createElement("script");
+      s.type = "text/javascript";
+      s.id = "btcp_widget";
+      s.src = "//btcppay.com/widget.js";
+      document.getElementById("setAmount").after(s);
+
+    }
+
+    var stopCheck = false;
+
+    function check() {
+      while (!stopCheck) {
+        if (!amtD) {
+          return setTimeout(check, 1000);
+        } else {
+          stopCheck = true;
+        }
+      }
+      BTCPWidgetLoad();
+    }
+
+    check();
+  </script>
 
   </body>
 </html>
