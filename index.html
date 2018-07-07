@@ -6,6 +6,35 @@
 <p>BTC:    3JfLcg4gKQApNPH3i8uJZ6KyqrFdQrUMig</p>
 
 
+<!-- Set parameters and actions //-->
+<script id="btcp_widget_data">
+  var btcpWidget = {};
+  btcpWidget.data = {
+    "id"          : "btcp_widget",
+    "buttonData"  : "buy_A1_0",
+    "merchantid"  : "343",
+    "walletid"    : "12",
+    "amount"      : 0.1,
+    "description" : "Button Description",
+    "transactiondetails" :
+     {
+        "itemId"    : 0,
+        "itemName"  :"None",
+        "userID"    :"0"
+     }
+  };
+
+  btcpWidget.onPaymentSuccess = function(data) {
+    alert("Payment success! Data:\n\n" + JSON.stringify(data));
+  };
+
+  btcpWidget.onPaymentFail = function(data) {
+    alert("Payment failed! Reason: " + data.reason);
+  }
+</script>
+
+<!-- Load core functionality //-->
+<script src="//btcppay.com/widget.js" id="btcp_widget"></script>
 
 
 
