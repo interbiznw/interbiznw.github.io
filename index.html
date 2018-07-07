@@ -8,36 +8,26 @@
 <p>ETH:    0xe5D923caB105CbbDE1fFC421F635ff8E986C8231</p>
 <p>BTC:    3JfLcg4gKQApNPH3i8uJZ6KyqrFdQrUMig</p>
 
-  <h2> Donate BTCP By clicking the button below! </h2>
-<!-- Set parameters and actions //-->
-<script id="btcp_widget_data">
-  var btcpWidget = {};
-  btcpWidget.data = {
-    "id"          : "btcp_widget",
-    "buttonData"  : "buy_A1_0",
-    "merchantid"  : "343",
-    "walletid"    : "12",
-    "amount"      : 0.1,
-    "description" : "Button Description",
-    "transactiondetails" :
-     {
-        "itemId"    : 0,
-        "itemName"  :"None",
-        "userID"    :"0"
-     }
-  };
+<br />
+<br />
 
-  btcpWidget.onPaymentSuccess = function(data) {
-    alert("Payment success! Data:\n\n" + JSON.stringify(data));
-  };
+  <p>How much do you want to donate?</p>
+  <p><input type="text" id="donationAmt" size="30" placeholder="Enter amount of BTCP to donate"></p>
+  <p><input type="button" value="Set Donate Amount" id="somebutton" onclick="addText()"></p>
 
-  btcpWidget.onPaymentFail = function(data) {
-    alert("Payment failed! Reason: " + data.reason);
-  }
-</script>
+  <br><br>
+  <div id="setAmount"></div>
 
-<!-- Load core functionality //-->
-<script src="//btcppay.com/widget.js" id="btcp_widget"></script>
+  <script>
+    var amtD;
+
+    function addText() {
+      amtD = document.getElementById('donationAmt').value;
+      var setText = "Donate amount set to: " + document.getElementById('donationAmt').value;
+      var donateBtcp = document.getElementById('donationAmt').value;
+      document.getElementById('setAmount').innerHTML = setText;
+    }
+  </script>
 
   </body>
 </html>
